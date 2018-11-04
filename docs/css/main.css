@@ -29,3 +29,24 @@ pre
 	background: #e4efd6;
    color: #507520;
 }
+
+hr {
+	border-color: #eee;
+}
+
+.subheader-anchor {
+	margin-top: 3em;
+}
+
+.subheader-anchor a{
+	color: #ccc;
+	text-decoration: none;
+}
+
+.menu-github-link{
+	text-decoration: none;
+}
+
+.menu-github-link b{
+	color: #fff;
+}
