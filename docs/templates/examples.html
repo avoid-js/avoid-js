@@ -1,0 +1,159 @@
+<div avj-template='Intro.RegularJS'>
+if(myObject.doSomething()) {
+	something.show(".success");
+} else {
+	something.show(".failed");
+}
+</div>
+<div avj-template='Intro.AvoidJS'>
+if(myObject.doSomething()) {
+	AvoidJS.Eventer.fire(AvoidJS.Events.MyComponent.success, {
+		message: "We good."
+	});
+} else {
+	AvoidJS.Eventer.fire(AvoidJS.Events.MyComponent.failed, {
+		message: "That's not good."
+	});
+}
+</div>
+<div avj-template='Intro.AvoidJS.HTML'>
+<div class="success"
+	  avj-action='hide, draw'
+	  avj-draw-wait='event'
+	  avj-draw-event-when='AvoidJS.Events.MyComponent.success'
+	  avj-draw-content='this'
+	  avj-draw-after="show">
+	{{event.message}}
+</div>
+<div class="error"
+	  avj-action='hide, draw'
+	  avj-draw-wait='event'
+	  avj-draw-event-when='AvoidJS.Events.MyComponent.failed'
+	  avj-draw-content='this'
+	  avj-draw-after="show">
+	{{event.message}}
+</div>
+</div>
+<div avj-template='Examples.HideShowDiv'>
+<div class="pure-button-group" role="group">
+	<button class="pure-button"
+			  avj-action="trigger"
+			  avj-trigger-action="ShowDiv"
+			  avj-trigger-wait="user"
+			  avj-trigger-user-when="click">Show</button>
+	<button class="pure-button"
+			  avj-action="trigger"
+			  avj-trigger-action="HideDiv"
+			  avj-trigger-wait="user"
+			  avj-trigger-user-when="click">Hide</button>
+</div>
+
+<div avj-action="hide, show"
+	  avj-hide-wait="now, trigger"
+	  avj-hide-id="HideDiv"
+	  avj-show-wait="trigger"
+	  avj-show-id="ShowDiv">
+	Some Div
+</div>
+</div>
+<div avj-template='Examples.HideShowDivMacro'>
+<div id="Macros">
+	<div avj-macros='onClickTrigger'
+		  avj-action='onClickTrigger=void'
+		  avj-onClickTrigger-wait='user'
+		  avj-onClickTrigger-user-when='click'
+		  avj-onClickTrigger-user-noDef='true'
+		  avj-onClickTrigger-context='this'
+		  avj-onClickTrigger-after="onClickTriggerAction=trigger"
+		  avj-onClickTriggerAction-action-expr="macros.value">
+	</div>
+
+	<div avj-macros='hideOnTrigger'
+		  avj-action='hideOnTrigger=hide'
+		  avj-hideOnTrigger-id-expr='macros.value'
+		  avj-hideOnTrigger-wait='trigger'
+		  avj-hideOnTrigger-context='this'>
+	</div>
+
+	<div avj-macros='showOnTrigger'
+		  avj-action='showOnTrigger=show'
+		  avj-showOnTrigger-id-expr='macros.value'
+		  avj-showOnTrigger-wait='trigger'
+		  avj-showOnTrigger-context='this'>
+	</div>
+</div>
+<div class="pure-button-group" role="group">
+	<button class="pure-button" avj-apply-onClickTrigger="ShowDivMacro">Show</button>
+	<button class="pure-button" avj-apply-onClickTrigger="HideDivMacro">Hide</button>
+</div>
+
+<div avj-action="hide"
+	  avj-apply-hideOnTrigger="HideDivMacro"
+	  avj-apply-showOnTrigger="ShowDivMacro">
+	Some Div
+</div>
+</div>
+<div avj-template='Examples.ToggleElDisplayMacro'>
+<button class="pure-button" avj-apply-onClickTrigger="ToggleSomeDivDisplayMacro">Toggle</button>
+
+<div avj-action="hide"
+	  avj-apply-toggleDisplayOnTrigger="ToggleSomeDivDisplayMacro">
+	Some Div
+</div>
+</div>
+<div avj-template='Examples.RenderDiv'>
+<button class="pure-button" avj-apply-onClickTrigger="RenderDiv">Render</button>
+
+<div avj-action="draw"
+	  avj-draw-wait="trigger"
+	  avj-draw-id="RenderDiv"
+	  avj-draw-placeholder="waiting...">
+	I am rendered
+</div>
+</div>
+<div avj-template='Examples.RenderTemplate'>
+<button class="pure-button" avj-apply-onClickTrigger="RenderDivTemplate">Render</button>
+
+<div avj-action="draw"
+	  avj-draw-wait="trigger"
+	  avj-draw-id="RenderDivTemplate"
+	  avj-draw-template='SomeDiv.Body'
+	  avj-draw-placeholder="waiting...">
+</div>
+</div>
+<div avj-template='Examples.PropertyExpressions'>
+<button class="pure-button" avj-apply-onClickTrigger="RenderDivTemplateExpr">Render</button>
+
+<div avj-action="draw"
+	  avj-draw-wait="trigger"
+	  avj-draw-id="RenderDivTemplateExpr"
+	  avj-draw-template='SomeDiv.Body'
+	  avj-draw-placeholder-expr="AvoidJS.Templater.Manager.getHTML('SomeDiv.Loading')">
+</div>
+</div>
+<div avj-template='Examples.ActionVariables'>
+<button class="pure-button" avj-apply-onClickTrigger="RenderDivTemplateComplex">Render</button>
+
+<div avj-action="draw"
+	  avj-draw-template='SomeDiv.Complex'
+	  avj-draw-data-template='SomeDiv.Body'
+	  avj-draw-context='this'>
+</div>
+</div>
+
+<div avj-template="SomeDiv.Complex">
+	<div avj-action="draw"
+		  avj-draw-context='this'
+		  avj-draw-wait="trigger"
+		  avj-draw-id="RenderDivTemplateComplex"
+		  avj-draw-template='{{action.data.template}}'
+		  avj-draw-placeholder="Here we will render {{action.data.template}}">
+	</div>
+</div>
+
+<div avj-template="SomeDiv.Body">
+	I'm rendered template
+</div>
+<div avj-template="SomeDiv.Loading">
+	I'm placeholder
+</div>

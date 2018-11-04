@@ -1,0 +1,31 @@
+pre code.hljs {
+	background: rgb(250, 250, 250);
+}
+
+pre
+{
+	-moz-tab-size: 4;
+	-o-tab-size:   4;
+	tab-size:      4;
+}
+
+#main .content {
+	/*max-width: none;*/
+}
+
+.loading_gif 
+{
+	height: 3em;
+}
+
+.disclosure {
+	padding: 1em;
+	background: #fcebbd;
+	color: #af9540;
+}
+
+.example {
+	padding: 1em;
+	background: #e4efd6;
+   color: #507520;
+}

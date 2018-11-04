@@ -1,0 +1,282 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AvoidJS - Avoid JavaScript code interacting with UI</title>
+		<meta name='keywords' content='AvoidJS'>
+		<meta name='description' content=''>
+		<script src="./js/avoid.js"></script>
+		<script src="./js/avoid.ext.js"></script>
+
+		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css">
+		<link rel="stylesheet" href="css/main.css">
+
+
+
+		<!--[if lte IE 8]>
+			 <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+		<![endif]-->
+		<!--[if gt IE 8]><!-->
+		<link rel="stylesheet" href="pure/css/layouts/side-menu.css">
+		<!--<![endif]-->
+	</head>
+<body>
+
+	<div id="layout">
+		<!-- Menu toggle -->
+		<a href="#menu" id="menuLink" class="menu-link">
+			<!-- Hamburger icon -->
+			<span></span>
+		</a>
+
+		<div id="menu">
+			<div class="pure-menu">
+            <a class="pure-menu-heading" href="#page_header">AvoidJS</a>
+
+            <ul class="pure-menu-list">
+					<li class="pure-menu-item" avj-apply-highlightMenu='#page_intro'><a href="#page_intro" class="pure-menu-link">Intro</a></li>
+					<li class="pure-menu-item" avj-apply-highlightMenu='#page_benefits'><a href="#page_benefits" class="pure-menu-link">Benefits</a></li>
+					<li class="pure-menu-item" avj-apply-highlightMenu='#page_examples'><a href="#page_examples" class="pure-menu-link">Examples</a></li>
+					<li class="pure-menu-item" avj-apply-highlightMenu='#page_what_next'><a href="#page_what_next" class="pure-menu-link">What next</a></li>
+            </ul>
+			</div>
+			<div class="pure-menu-separator"></div>
+			<h4></h4>
+			<a href='https://github.com/Realexer/avoidjs'>Github</a>
+		</div>
+
+		<div id="main">
+			<div class="header" id="page_header">
+            <h1>AvoidJS</h1>
+            <h2>Avoid JavaScript code interacting with UI</h2>
+			</div>
+
+			<div class="content">
+				<div id="page_intro">
+					<h2 class="content-subhead">What is AvoidJS</h2>
+					<hr/>
+					<p>AvoidJS is a simple experimental library the main purpose of which is too provide a tool and the code style that helps to separate HTML and JS code completely.</p>
+					
+					<h3 class="content-subhead">Actions and events</h3>
+					<p>The cornerstone of AvoidJS is events and actions. 
+						UI part reacts to the events that JS part produces and performs actions based on them.
+						This makes JS code 100% UI-agnostic, which means that JS code now can focus solely on application logic and don't worry about UI.
+					</p>
+					<p>So if regular code would loook something like this:</p>
+					<pre><code language="javascript" avj-apply-codeTemplate='Intro.RegularJS'></code></pre>
+					<p>With AvoidJS it will look something like this:</p>
+				</div>
+				<pre><code language="javascript" avj-apply-codeTemplate='Intro.AvoidJS'></code></pre>
+				<pre><code language="html" avj-apply-codeTemplate='Intro.AvoidJS.HTML'></code></pre>
+				<p>So as you can see JS code doesn't care how UI will react to the result of the action, 
+					while HTML code only cares about UI and waits for events to fire.
+				</p>
+				
+				<div id="page_benefits">
+					<h2><a href='#page_benefits'>#</a> Benefits</h2>
+					<hr class=""/>
+					<ul>
+						<li>cleaner JS code and explicit HTML code</li>
+						<li>macros - define complex actions as a set of instructions</li>
+						<li>extensibility - create your own actions</li>
+						<li>templates - define and reuse HTML templates</li>
+						<li>test UI with fake events (no need to execute application logic to test UI, just fire events)</li>
+						<li>better unit testing of JS code (probably, why not)</li>
+					</ul>
+					
+					<div class="disclosure">
+						Disclosures:
+						<ul>
+							<li>right now AvoidJS is a prototype, it's not intended to be used without precautions</li>
+							<li>it's not a rip off from any other library, framework or even code samples if such even exists</li>
+							<li>as of right now the library isn't covered with any tests</li>
+							<li>this documentation doesn't cover all details and features of the library and mainly serves as an introduction page</li>
+						</ul>
+					</div>
+					
+				</div>
+				<div id="page_examples">
+					<h2><a href='#page_examples'>#</a> Examples</h2>
+					<hr class=""/>
+					<section>
+						<h3 class="content-subhead">Show / hide element using actions</h3>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.HideShowDiv'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.HideShowDiv"></div>
+						</div>
+
+					</section>
+					<section>
+						<h3 class="content-subhead">Show / hide element using macros</h3>
+						<p></p>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.HideShowDivMacro'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.HideShowDivMacro"></div>
+						</div>
+					</section>
+
+					<section>
+						<h3 class="content-subhead">Toggle display of element using macros</h3>
+						<p></p>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.ToggleElDisplayMacro'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.ToggleElDisplayMacro"></div>
+						</div>
+					</section>
+
+					<section>
+						<h3 class="content-subhead">Render element</h3>
+						<p></p>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.RenderDiv'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.RenderDiv"></div>
+						</div>
+					</section>
+
+					<section>
+						<h3 class="content-subhead">Render template</h3>
+						<p></p>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.RenderTemplate'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.RenderTemplate"></div>
+						</div>
+					</section>
+
+					<section>
+						<h3 class="content-subhead">Propery expressions</h3>
+						<p></p>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.PropertyExpressions'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.PropertyExpressions"><img src='img/loading_dots.gif' class="loading_gif"/></div>
+						</div>
+					</section>
+
+					<section>
+						<h3 class="content-subhead">Action variables</h3>
+						<p></p>
+						<pre class="">
+							<code language="html" avj-apply-codeTemplate='Examples.ActionVariables'><img src='img/loading_dots.gif' class="loading_gif"/></code>
+						</pre>
+						<div class="example">
+							<div avj-apply-drawTemplate="Examples.ActionVariables"></div>
+						</div>
+					</section>
+				</div>
+				<div id='page_what_next'>
+					<h2><a href='#page_what_next'>#</a> What next</h2>
+					<hr/>
+					<p>While the future of the project remains uncertain, these are current priorities:</p>
+					<ul>
+						<li>cover code with unit tests</li>
+						<li>improve implementation of certain components</li>
+						<li>expand documentation</li>
+					</ul>
+					<p>If you want to learn more about the library, you can take a look at the source code on github 
+						or view the source code of this website as it uses AvoidJS for every UI part.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="MacrosHandler">
+		<div avj-macros='onClick'
+			  avj-action='onClick=void'
+			  avj-onClick-wait='user'
+			  avj-onClick-user-when='click'
+			  avj-onClick-user-noDef='true'
+			  avj-onClick-context='this'
+			  avj-onClick-after-expr="macros.value">
+
+		</div>
+
+		<div avj-macros='onClickTrigger'
+			  avj-action='onClickTrigger=void'
+			  avj-onClickTrigger-wait='user'
+			  avj-onClickTrigger-user-when='click'
+			  avj-onClickTrigger-user-noDef='true'
+			  avj-onClickTrigger-context='this'
+			  avj-onClickTrigger-after="onClickTriggerAction=trigger"
+			  avj-onClickTriggerAction-action-expr="macros.value">
+
+		</div>
+
+		<div avj-macros='hideOnTrigger'
+			  avj-action='hideOnTrigger=hide'
+			  avj-hideOnTrigger-id-expr='macros.value'
+			  avj-hideOnTrigger-wait='trigger'
+			  avj-hideOnTrigger-context='this'>
+		</div>
+
+		<div avj-macros='showOnTrigger'
+			  avj-action='showOnTrigger=show'
+			  avj-showOnTrigger-id-expr='macros.value'
+			  avj-showOnTrigger-wait='trigger'
+			  avj-showOnTrigger-context='this'>
+		</div>
+
+		<div avj-macros='toggleDisplayOnTrigger'
+			  avj-action='toggleDisplayOnTrigger=toggleDisplay'
+			  avj-toggleDisplayOnTrigger-id-expr='macros.value'
+			  avj-toggleDisplayOnTrigger-wait='trigger'
+			  avj-toggleDisplayOnTrigger-context='this'>
+		</div>
+
+		<div avj-macros='performOnTrigger'
+			  avj-action='performOnTrigger=void'
+			  avj-performOnTrigger-id-expr='macros.value'
+			  avj-performOnTrigger-wait='trigger'
+			  avj-performOnTrigger-context='this'>
+		</div>
+
+		<div avj-macros='drawTemplate'
+			  avj-action='drawTemplate=draw'
+			  avj-drawTemplate-template-expr='macros.value'
+			  avj-drawTemplate-context='this'>
+		</div>
+		
+		<div avj-macros='codeTemplate'
+			  avj-action='codeTemplate=drawHTML'
+			  avj-codeTemplate-template-expr='macros.value'
+			  avj-codeTemplate-context='this'
+			  avj-codeTemplate-after="highlightCode">
+		</div>
+		
+		<div avj-macros='highlightMenu'
+			  avj-action="highlightMenu=condition"
+			  avj-highlightMenu-wait="now, window"
+			  avj-highlightMenu-window-when="hashchange"
+			  avj-highlightMenu-context="this"
+			  avj-highlightMenu-expr="location.hash == macros.value"
+			  avj-highlightMenu-true="switchClass=addClass"
+			  avj-highlightMenu-false="switchClass=removeClass"
+			  avj-switchClass-class="pure-menu-selected"></div>
+
+	</div>
+	
+	<div id="TemplatesHandler" avj-load-templates="templates/examples.html"></div>
+
+	<script src="pure/js/ui.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+	
+	<script>
+		AvoidJS.cmd.init(document.body);
+	</script>
+
+</body>
+</html>
