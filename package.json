@@ -1,0 +1,29 @@
+{
+  "name": "avoidjs",
+  "version": "0.0.0",
+  "description": "AvoidJS is a simple experimental library the main goal of which is too provide a tool and the code style that helps to separate HTML and JS code completely.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-concat-plugin": "^3.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Realexer/avoidjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Realexer/avoidjs/issues"
+  },
+  "homepage": "https://github.com/Realexer/avoidjs#readme"
+}
