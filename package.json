@@ -1,6 +1,6 @@
 {
   "name": "@avoid-js/avoid-js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Avoid JS code interacting with UI.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
