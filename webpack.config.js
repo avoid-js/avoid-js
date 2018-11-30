@@ -1,22 +1,40 @@
 const path = require('path');
+const argv = require('argv');
 const ConcatPlugin = require('webpack-concat-plugin');
 
-module.exports = env => 
+const args = argv.option([
+	{
+		name: 'destination',
+		short: 'd',
+		type: 'string'
+	},
+	{
+		name: 'minify',
+		short: 'm',
+		type: 'boolean'
+	}
+]).run();
+
+const configDefaults = {
+	destination: 'build',
+	minify: false
+};
+
+const config = Object.assign({}, configDefaults, args.options);
+
+module.exports = () =>
 {
 	return {
 		output: {
-			path: path.resolve(__dirname, 'docs/js'),
-			filename: (env == 'prod' ? 'avoid.min.js' : 'avoid.js')
-		},
-		optimization: {
-			minimize: false
+			path: path.resolve(__dirname, config.destination),
+			filename: (config.minify ? 'avj.min.js' : 'avoid.js')
 		},
 		entry: './src/avoid.js',
 		plugins: [
 			new ConcatPlugin({
-				uglify: (env == 'prod'),
+				uglify: config.minify,
 				sourceMap: false,
-				fileName: (env == 'prod' ? 'avoid.min.js' : 'avoid.js'),
+				fileName: (config.minify ? 'avj.min.js' : 'avoid.js'),
 				filesToConcat: [
 					'./src/_ext/**',
 
