@@ -1,12 +1,15 @@
 {
-  "name": "@avoid-js/avoid-js",
-  "version": "0.0.5",
+  "name": "@avoid-js/avoid.js",
+  "version": "0.0.6",
   "description": "Avoid JS code interacting with UI.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["avoid-js", "JS agnostic UI", "UI agnostic JS", "separate JS and HTML"],
-  "author": "https://github.com/realexer",
+  "keywords": ["avoid-js", "AvoidJS", "JS agnostic UI", "UI agnostic JS", "separate JS and HTML"],
+  "author": {
+    "name": "realexer",
+    "url": "https://github.com/realexer"
+  },
   "license": "Apache 2.0",
   "devDependencies": {
     "webpack": "^4.23.1",
