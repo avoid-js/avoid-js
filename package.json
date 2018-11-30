@@ -1,6 +1,6 @@
 {
   "name": "@avoid-js/avoid-js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Avoid JS code interacting with UI.",
   "scripts": {
     "build": "webpack -m false; webpack -m true",
