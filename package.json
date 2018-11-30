@@ -1,6 +1,6 @@
 {
   "name": "@avoid-js/avoid-js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Avoid JS code interacting with UI.",
   "scripts": {
     "build": "webpack -m false; webpack -m true",
@@ -18,7 +18,7 @@
     "name": "realexer",
     "url": "https://github.com/realexer"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "devDependencies": {
     "argv": "0.0.2",
     "lodash": "^4.17.11",
