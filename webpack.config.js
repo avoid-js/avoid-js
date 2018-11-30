@@ -9,48 +9,74 @@ const args = argv.option([
 		type: 'string'
 	},
 	{
-		name: 'minify',
-		short: 'm',
-		type: 'boolean'
+		name: 'type',
+		short: 't',
+		type: 'string'
 	}
 ]).run();
 
 const configDefaults = {
 	destination: 'build',
-	minify: false
+	type: 'module' // module|plain
 };
 
 const config = Object.assign({}, configDefaults, args.options);
+
+const files = [
+	'./src/_ext/**',
+
+	'./src/avoid.js',
+	'./src/conf.js',
+	'./src/core/**',
+	'./src/libs/**',
+	'./src/templater/Templater.js',
+	'./src/templater/cmp/**',
+	'./src/ui/**',
+	'./src/cmd.js',
+];
+
+switch(config.type)
+{
+	case 'plain':
+		break;
+	case 'module':
+        files.push('./src/export.js');
+		break;
+	default:
+		throw new Error(`Type '${config.type}' is not supported.`);
+}
 
 module.exports = () =>
 {
 	return {
 		output: {
-			path: path.resolve(__dirname, config.destination),
-			filename: (config.minify ? 'avj.min.js' : 'avoid.js')
+			library: 'AvoidJS',
+            libraryTarget: "umd",
+            path: path.resolve(__dirname, config.destination),
+			filename: 'avoid.js'
 		},
 		entry: './src/avoid.js',
 		plugins: [
+			// source version
 			new ConcatPlugin({
-				uglify: config.minify,
+				uglify: false,
 				sourceMap: false,
-				fileName: (config.minify ? 'avj.min.js' : 'avoid.js'),
-				filesToConcat: [
-					'./src/_ext/**',
-
-					'./src/avoid.js',
-					'./src/conf.js',
-					'./src/core/**',
-					'./src/libs/**',
-					'./src/templater/Templater.js',
-					'./src/templater/cmp/**',
-					'./src/ui/**',
-					'./src/cmd.js',
-				],
+				fileName: 'avoid.js',
+				filesToConcat: files,
 				attributes: {
 					 async: true
 				}
-			})
+			}),
+			// minified version
+            new ConcatPlugin({
+                uglify: true,
+                sourceMap: false,
+                fileName: 'avj.min.js',
+                filesToConcat: files,
+                attributes: {
+                    async: true
+                }
+            })
 		]
 	}; 
 };

@@ -1,10 +1,12 @@
 {
   "name": "@avoid-js/avoid-js",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Avoid JS code interacting with UI.",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack -m false; webpack -m true",
-    "build-docs": "webpack --destination=docs/js -m false; webpack --destination=docs/js -m true; ",
+    "build": "webpack --destination=build/module -t module",
+    "build-plain": "webpack --destination=build/plain -t plain",
+    "build-docs": "webpack --destination=docs/js -t plain",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
