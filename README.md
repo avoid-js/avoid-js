@@ -1,5 +1,15 @@
-# avoid-js
-[AvoidJS](https://avoid-js.github.io/avoid-js/) is a simple experimental library the main purpose of which is too provide a tool and the code style that helps to **separate HTML and JS code completely**.
+# [AvoidJS](https://avoid-js.github.io/avoid-js/) [![npm version](https://img.shields.io/npm/v/@avoid-js/avoid-js.svg?style=flat)](https://www.npmjs.com/package/@avoid-js/avoid-js)
+
+AvoidJS is a simple experimental library the main purpose of which is too provide a tool and the code style that helps to **separate HTML and JS code completely**.
+
+# Install 
+Using npm:
+
+```npm install @avoid-js/avoid-js ``` 
+
+or download JS file from ```./build/plain/``` and use directly in HTML code: 
+
+```<script type="java/script">avoid.js</script>```.
 
 
 
