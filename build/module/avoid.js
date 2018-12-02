@@ -531,6 +531,26 @@ AvoidJS.Logger =
 		}
 	}
 };
+AvoidJS.core.Timeout = new function() 
+{
+	this.reset = function(timeout) 
+	{
+		if(timeout != null) {
+			clearTimeout(timeout);
+			timeout = null;
+		}
+	};
+	
+	this.set = function(func, time) 
+	{
+		var timeout = setTimeout(function() {
+			func();
+			timeout = null;
+		}, time);
+		
+		return timeout;
+	};
+};
 AvoidJS.core.Threader = 
 {
 	putInQueue: function(func, callback) 
@@ -576,26 +596,6 @@ AvoidJS.core.Threader =
 			}
 		}
 	}
-};
-AvoidJS.core.Timeout = new function() 
-{
-	this.reset = function(timeout) 
-	{
-		if(timeout != null) {
-			clearTimeout(timeout);
-			timeout = null;
-		}
-	};
-	
-	this.set = function(func, time) 
-	{
-		var timeout = setTimeout(function() {
-			func();
-			timeout = null;
-		}, time);
-		
-		return timeout;
-	};
 };
 AvoidJS.Ajax = 
 {
@@ -2619,13 +2619,6 @@ AvoidJS.Events.TemplatesManager =
 };
 
 AvoidJS.Events.registerEvents(AvoidJS.Events.TemplatesManager);
-AvoidJS.ui.Effects = new function() 
-{
-	this.fadeOut = function(el) 
-	{
-		UIManager.setStyle(el, "opacity", 0.3);
-	};
-};
 AvoidJS.ui.DOM = new function() 
 {
 	var _this = this;
@@ -3299,6 +3292,13 @@ AvoidJS.Events.DOM =
 };
 
 AvoidJS.Events.registerEvents(AvoidJS.Events.DOM);
+AvoidJS.ui.Effects = new function() 
+{
+	this.fadeOut = function(el) 
+	{
+		UIManager.setStyle(el, "opacity", 0.3);
+	};
+};
 AvoidJS.ui.Format = new function() 
 {
 	this.nl2br = function(str) 
@@ -3330,17 +3330,18 @@ AvoidJS.cmd =
 {
 	init: function(node) 
 	{
+		// subscribe before init as the event will be thrown without queueing
+        AvoidJS.Eventer.subscribe(AvoidJS.Events.TemplatesManager.loaded, function()
+        {
+            AvoidJS.Templater.digest(node);
+
+            AvoidJS.Eventer.fire(AvoidJS.Events.AvoidJS.inited, null, {
+                noQ: true
+            });
+        });
+
 		AvoidJS.Templater.init();
 		AvoidJS.Templater.Manager.init(node);
-
-		AvoidJS.Eventer.subscribe(AvoidJS.Events.TemplatesManager.loaded, function() 
-		{
-			AvoidJS.Templater.digest(node);
-			
-			AvoidJS.Eventer.fire(AvoidJS.Events.AvoidJS.inited, null, {
-				noQ: true
-			});
-		});
 	}
 };
 

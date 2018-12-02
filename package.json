@@ -1,6 +1,6 @@
 {
   "name": "@avoid-js/avoid-js",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "Avoid JS code interacting with UI.",
   "main": "index.js",
   "scripts": {
