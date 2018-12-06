@@ -5,8 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>AvoidJS - Avoid JavaScript code interacting with UI</title>
-		<meta name='keywords' content='AvoidJS'>
-		<meta name='description' content=''>
+		<meta name='keywords' content='avoid js, avoidjs, JS agnostic UI, separate HTML and JS'>
+		<meta name='description' content='Avoid JavaScript code interacting with UI. Event-driven action-based UI and business-logic-focused JS.'>
 		<script src="./js/avoid.js"></script>
 		<script src="./js/avoid.ext.js"></script>
 
@@ -27,12 +27,13 @@
 
 	<div id="layout">
 		<!-- Menu toggle -->
-		<a href="#menu" id="menuLink" class="menu-link">
+		<a href="#menu" id="menuLink"
+		   class="menu-link">
 			<!-- Hamburger icon -->
 			<span></span>
 		</a>
 
-		<div id="menu">
+		<nav id="menu">
 			<div class="pure-menu">
             <a class="pure-menu-heading" href="#page_header">AvoidJS</a>
 
@@ -45,17 +46,19 @@
 			</div>
 			<div class="pure-menu-separator"></div>
 			<p></p>
-			<a href='https://github.com/avoid-js/avoid-js' class="menu-github-link"><b>GitHub</b></a>
-		</div>
+			<a href='https://github.com/avoid-js/avoid-js' class="menu-external-link" title="Sources on github."><b>GitHub</b></a>
+			<p></p>
+			<a href='https://www.npmjs.com/package/@avoid-js/avoid-js' class="menu-external-link" title="npm package details."><b>Npm</b></a>
+		</nav>
 
 		<div id="main">
-			<div class="header" id="page_header">
+			<header class="header" id="page_header">
             <h1>AvoidJS</h1>
             <h2>Avoid JavaScript code interacting with UI</h2>
-			</div>
+			</header>
 
-			<div class="content">
-				<div id="page_intro">
+			<main class="content">
+				<section id="page_intro">
 					<h2 class="content-subhead">What is AvoidJS</h2>
 					<hr/>
 					<p><a href='https://github.com/avoid-js/avoid-js'>AvoidJS</a> is a simple experimental library the main purpose of which is too provide a tool and the code style that helps to <b>separate HTML and JS code completely.</b></p>
@@ -68,14 +71,15 @@
 					<p>So if regular code would loook something like this:</p>
 					<pre><code language="javascript" avj-apply-codeTemplate='Intro.RegularJS'></code></pre>
 					<p>With AvoidJS it will look something like this:</p>
-				</div>
-				<pre><code language="javascript" avj-apply-codeTemplate='Intro.AvoidJS'></code></pre>
-				<pre><code language="html" avj-apply-codeTemplate='Intro.AvoidJS.HTML'></code></pre>
-				<p>So as you can see JS code doesn't care how UI will react to the result of the action, 
-					while HTML code only cares about UI and waits for events to fire.
-				</p>
+
+					<pre><code language="javascript" avj-apply-codeTemplate='Intro.AvoidJS'></code></pre>
+					<pre><code language="html" avj-apply-codeTemplate='Intro.AvoidJS.HTML'></code></pre>
+					<p>So as you can see JS code doesn't care how UI will react to the result of the action,
+						while HTML code only cares about UI and waits for events to fire.
+					</p>
+				</section>
 				
-				<div id="page_benefits">
+				<section id="page_benefits">
 					<h2 class="subheader-anchor"><a href='#page_benefits'>#</a> Benefits</h2>
 					<hr class=""/>
 					<ul>
@@ -97,11 +101,11 @@
 						</ul>
 					</div>
 					
-				</div>
-				<div id="page_examples">
+				</section>
+				<section id="page_examples">
 					<h2 class="subheader-anchor"><a href='#page_examples'>#</a> Examples</h2>
 					<hr class=""/>
-					<section>
+					<article>
 						<h3 class="content-subhead">Show / hide element using actions</h3>
 						<pre class="">
 							<code language="html" avj-apply-codeTemplate='Examples.HideShowDiv'><img src='img/loading_dots.gif' class="loading_gif"/></code>
@@ -110,8 +114,8 @@
 							<div avj-apply-drawTemplate="Examples.HideShowDiv"></div>
 						</div>
 
-					</section>
-					<section>
+					</article>
+					<article>
 						<h3 class="content-subhead">Show / hide element using macros</h3>
 						<p></p>
 						<pre class="">
@@ -120,9 +124,9 @@
 						<div class="example">
 							<div avj-apply-drawTemplate="Examples.HideShowDivMacro"></div>
 						</div>
-					</section>
+					</article>
 
-					<section>
+					<article>
 						<h3 class="content-subhead">Toggle display of element using macros</h3>
 						<p></p>
 						<pre class="">
@@ -131,9 +135,9 @@
 						<div class="example">
 							<div avj-apply-drawTemplate="Examples.ToggleElDisplayMacro"></div>
 						</div>
-					</section>
+					</article>
 
-					<section>
+					<article>
 						<h3 class="content-subhead">Render element</h3>
 						<p></p>
 						<pre class="">
@@ -142,9 +146,9 @@
 						<div class="example">
 							<div avj-apply-drawTemplate="Examples.RenderDiv"></div>
 						</div>
-					</section>
+					</article>
 
-					<section>
+					<article>
 						<h3 class="content-subhead">Render template</h3>
 						<p></p>
 						<pre class="">
@@ -153,9 +157,9 @@
 						<div class="example">
 							<div avj-apply-drawTemplate="Examples.RenderTemplate"></div>
 						</div>
-					</section>
+					</article>
 
-					<section>
+					<article>
 						<h3 class="content-subhead">Propery expressions</h3>
 						<p></p>
 						<pre class="">
@@ -164,9 +168,9 @@
 						<div class="example">
 							<div avj-apply-drawTemplate="Examples.PropertyExpressions"><img src='img/loading_dots.gif' class="loading_gif"/></div>
 						</div>
-					</section>
+					</article>
 
-					<section>
+					<article>
 						<h3 class="content-subhead">Action variables</h3>
 						<p></p>
 						<pre class="">
@@ -175,9 +179,9 @@
 						<div class="example">
 							<div avj-apply-drawTemplate="Examples.ActionVariables"></div>
 						</div>
-					</section>
-				</div>
-				<div id='page_what_next'>
+					</article>
+				</section>
+				<section id='page_what_next'>
 					<h2 class="subheader-anchor"><a href='#page_what_next'>#</a> What next</h2>
 					<hr/>
 					<p>While the future of the project remains uncertain, these are current priorities:</p>
@@ -189,8 +193,8 @@
 					<p>If you want to learn more about the library, you can take a look at the source code on github 
 						or view the source code of this website as it uses AvoidJS for every UI part.
 					</p>
-				</div>
-			</div>
+				</section>
+			</main>
 		</div>
 	</div>
 	
